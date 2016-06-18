@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Example of Time Schedule</title>
+	<title>Time Schedule</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/styles.css">
-	<!-- Added Moment JS -->
+	<link rel="stylesheet" href="assets/css/trainSchedule.css">
+	<!-- Firebase Reference -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
+	<!-- Moment.js Reference -->
  	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
@@ -17,6 +20,38 @@
 	<div class="jumbotron" id="mainheading">
 	  <h2>Anytime is Train Time</h2>
 	  <p>Choo Choo. Chee Chee</p>
+	</div>
+	<div class="panel panel-default" id="trainSched">
+		<!-- Default panel contents -->
+		<div class="panel-heading" id="phead1">Panel heading</div>
+
+		<!-- Table -->
+		<table class="table">
+		...
+		</table>
+	</div>
+	<div class="panel panel-default" id="addTrain">
+		<div class="panel-heading" id="phead2">Panel heading</div>
+
+		<form>
+			<div class="form-group">
+				<label for="trainName">Train Name</label>
+				<input type="text" class="form-control" id="trainName" placeholder="trainName">
+			</div>
+			<div class="form-group">
+				<label for="destination">Destination</label>
+				<input type="password" class="form-control" id="destination" placeholder="destination">
+			</div>
+			<div class="form-group">
+				<label for="firstTrain">First Train Time (HH:mm - miltary time)</label>
+				<input type="time" class="form-control" id="firstTrain" placeholder="firstTrain">
+			</div>
+			<div class="form-group">
+				<label for="frequency">Frequency (min)</label>
+				<input type="time" class="form-control" id="frequency" placeholder="frequency">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 	</div>
 </div>
 
