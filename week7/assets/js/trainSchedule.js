@@ -90,8 +90,69 @@ $(document).ready(function(){
 		console.log(newTrainInfo.firstTrain)
 		// Alert
 		alert("Train info successfully added");
+		// Clears all of the text-boxes
+		$("#trainName").val("");
+		$("#destination").val("");
+		$("#firstTrain").val("");
+		$("#frequency").val("");
 
-	})
+		// Prevents moving to new page
+		return false;
+
+	});
+
+	// 3. Create Firebase event for adding train to the database 
+	//and a row in the html when a user adds an entry
+	trainData.on("child_added", function(childSnapshot, prevChildKey){
+
+		console.log(childSnapshot.val());
+
+		// Store everything into a variable.
+		var trainname = childSnapshot.val().trainName;
+		var destination = childSnapshot.val().destination;
+		var firsttraintime = childSnapshot.val().firsttraintime;
+		var frequency = childSnapshot.val().frequency;
+
+		// Employee Info
+		console.log(trainName);
+		console.log(destination);
+		console.log(firsttraintime);
+		console.log(frequency);
+
+		/*// Prettify the employee start
+		var empStartPretty = moment.unix(empStart).format("MM/DD/YY");
+		// Calculate the months worked using hardconre math
+		// To calculate the months worked
+		var empMonths = moment().diff(moment.unix(empStart, 'X'), "months");
+		console.log(empMonths);
+
+		// Calculate the total billed rate
+		var empBilled = empMonths * empRate;
+		console.log(empBilled);
+
+		// Add each train's data into the table
+		$("#trainTable > tbody").append("<tr><td>" +
+		 trainName + "</td><td>" + destination + "</td><td>" + frequency
+		  + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td>";
+*/
+		var tableRow = $("<tr>");
+		var tableData1 = $("<td>");
+		tableData1.html(trainName);
+		var tableData2 = $("<td>");
+		tableData2.html(destination);
+		var tableData3 = $("<td>");
+		tableData3.html(frequency);
+		
+		var tableData4 = $("<td>");
+		var tableData5 = $("<td>");
+		tableRow.append(tableData1);
+		tableRow.append(tableData2);
+		tableRow.append(tableData3);
+		tableRow.append(tableData4);
+		tableRow.append(tableData4);
+
+		$("#trainTable > tbody").append(tableRow);
+		});
 
 })
 
