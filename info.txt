@@ -1,0 +1,8 @@
+…or create a new repository on the command line
+
+echo "# Projects" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/PadmajaKondeti/Projects.git
+git push -u origin master
