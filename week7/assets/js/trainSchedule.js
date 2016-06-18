@@ -5,7 +5,8 @@
 		// First Train of the Day is 3:00 AM
 		// Assume Train comes every 3 minutes.
 		// Assume the current time is 3:16 AM....
-		// What time would the next train be...? (Use your brain first)
+		// What time would the next train be...?
+		// (Use your brain first)
 		// It would be 3:18 -- 2 minutes away
 
 		// (TEST 2)
@@ -59,3 +60,38 @@
 		// Next Train
 		var nextTrain = moment().add(tMinutesTillTrain, "minutes")
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
+
+
+
+// 1. Link to Firebase
+var trainData = new Firebase("https://trainsched20160618.firebaseio.com/");
+// 2. Button for adding Train info
+$(document).ready(function(){
+	$(document).on("click", "#submitInfo", function(){
+		// Grabs user input
+		var trainName = $("#trainName").val().trim();
+		var destination = $("#destination").val().trim();
+		var firstTrain = moment($("#firstTrain").val().trim(), "DD/MM/YY").format("X");
+		var frequency = $("#frequency").val().trim();
+
+		// Creates local "temporary" object for holding train data
+		var newTrainInfo = {
+			trainname:  trainName,
+			destination: destination,
+			firsttraintime: firstTrain,
+			frequency: frequency
+		}
+		// Uploads train data to the database
+		trainData.push(newTrainInfo);
+		// Logs everything to console
+		console.log(newTrainInfo.trainName);
+		console.log(newTrainInfo.destination);
+		console.log(newTrainInfo.frequency);
+		console.log(newTrainInfo.firstTrain)
+		// Alert
+		alert("Train info successfully added");
+
+	})
+
+})
+
