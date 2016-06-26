@@ -76,10 +76,8 @@ $(document).ready(function(){
 		var trainName = $("#trainName").val().trim();
 		var destination = $("#destination").val().trim();
 		
-
-
-		var firstTrain = moment($("#firstTrain").val().trim()).format("hh:mm");
 		console.log($("#firstTrain").val());
+		var firstTrain=$("#firstTrain").val().trim();
 		console.log(firstTrain);
 		
 		var frequency = $("#frequency").val().trim();
@@ -92,11 +90,7 @@ $(document).ready(function(){
 		}
 		// Uploads train data to the database
 		trainData.push(newTrainInfo);
-		// Logs everything to console
-		console.log(newTrainInfo.trainname);
-		console.log(newTrainInfo.destination);
-		console.log(newTrainInfo.frequency);
-		console.log(newTrainInfo.firsttraintime)
+		
 		// Alert
 		alert("Train info successfully added");
 		// Clears all of the text-boxes
@@ -114,7 +108,7 @@ $(document).ready(function(){
 	//and a row in the html when a user adds an entry
 	trainData.on("child_added", function(childSnapshot, prevChildKey){
 
-		console.log(childSnapshot.val());
+		//console.log(childSnapshot.val());
 
 		// Store everything into a variable.
 		var trainName = childSnapshot.val().trainname;
