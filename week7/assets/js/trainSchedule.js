@@ -68,6 +68,7 @@ var trainData = new Firebase("https://trainsched20160618.firebaseio.com/");
 // 2. Button for adding Train info
 $(document).ready(function(){
 	$(document).on("click", "#submitInfo", function(){
+		debugger
 		// Grabs user input
 		var trainName = $("#trainName").val().trim();
 		var destination = $("#destination").val().trim();
@@ -108,7 +109,7 @@ $(document).ready(function(){
 		console.log(childSnapshot.val());
 
 		// Store everything into a variable.
-		var trainname = childSnapshot.val().trainName;
+		var trainName = childSnapshot.val().trainName;
 		var destination = childSnapshot.val().destination;
 		var firsttraintime = childSnapshot.val().firsttraintime;
 		var frequency = childSnapshot.val().frequency;
@@ -136,20 +137,26 @@ $(document).ready(function(){
 		  + "</td><td>" + nextArrival + "</td><td>" + minutesAway + "</td>";
 */
 		var tableRow = $("<tr>");
+		debugger
 		var tableData1 = $("<td>");
 		tableData1.html(trainName);
+		debugger
+		console.log( tableData1.html());
 		var tableData2 = $("<td>");
 		tableData2.html(destination);
 		var tableData3 = $("<td>");
 		tableData3.html(frequency);
 		
 		var tableData4 = $("<td>");
+		tableData4.html(frequency);
 		var tableData5 = $("<td>");
+		tableData4.html(frequency);
+
 		tableRow.append(tableData1);
 		tableRow.append(tableData2);
 		tableRow.append(tableData3);
 		tableRow.append(tableData4);
-		tableRow.append(tableData4);
+		tableRow.append(tableData5);
 
 		$("#trainTable > tbody").append(tableRow);
 		});
