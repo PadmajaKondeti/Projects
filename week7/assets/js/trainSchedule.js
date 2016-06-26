@@ -75,9 +75,14 @@ $(document).ready(function(){
 		// Grabs user input
 		var trainName = $("#trainName").val().trim();
 		var destination = $("#destination").val().trim();
-		var firstTrain = moment($("#firstTrain").val().trim(), "DD/MM/YY").format("X");
-		var frequency = $("#frequency").val().trim();
+		
 
+
+		var firstTrain = moment($("#firstTrain").val().trim()).format("hh:mm");
+		console.log($("#firstTrain").val());
+		console.log(firstTrain);
+		
+		var frequency = $("#frequency").val().trim();
 		// Creates local "temporary" object for holding train data
 		var newTrainInfo = {
 			trainname:  trainName,
@@ -122,7 +127,7 @@ $(document).ready(function(){
 		var tableData1 = $("<td>");
 		tableData1.html(trainName);
 		
-		console.log( tableData1.html());
+		//console.log( tableData1.html());
 		var tableData2 = $("<td>");
 		tableData2.html(destination);
 		var tableData3 = $("<td>");
@@ -135,31 +140,31 @@ $(document).ready(function(){
 		var tFrequency = frequency;
 		// First Time (pushed back 1 year to make sure it comes before current time to avoid negative numbers)
 		//var firstTimeConverted = moment(firsttraintime,"hh:mm").subtract(1, "years");
-		var firstTimeConverted = moment(firsttraintime,"hh:mm");//.//subtract(1, "years");
-		console.log(firsttraintime);
-		console.log("First TIME: " +  firstTimeConverted);
+		var firstTimeConverted = moment(firsttraintime,"hh:mm").subtract(1, "years");
+		//console.log(firsttraintime);
+		//console.log("First TIME: " +  firstTimeConverted);
 		//console.log("First TIME: " + firstTimeConverted);
 		
 		// Current Time
 		var currentTime = moment();
-		console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+		//console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
 		// Difference between the times
 		var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-		console.log("DIFFERENCE IN TIME: " + diffTime);
+		//console.log("DIFFERENCE IN TIME: " + diffTime);
 
 
 		// Time apart (remainder)
 		var tRemainder = diffTime % tFrequency;
-		console.log(tRemainder);
+		//console.log(tRemainder);
 
 		// Minute Until Train
 		var tMinutesTillTrain = tFrequency - tRemainder;
-		console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+		//console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 		// Next Train
 		var nextTrain = moment().add(tMinutesTillTrain, "minutes")
-		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
+		//console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
 
 
 		tableData4.html(moment(nextTrain).format("hh:mm"));
